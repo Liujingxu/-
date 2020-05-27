@@ -1,6 +1,9 @@
 package com.liujx;
 
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class SparseMatrix {
 
@@ -33,6 +36,44 @@ public class SparseMatrix {
         return result;
     }
 
+    public int[][] read(String fileName){
+        File file = new File(fileName);
+        BufferedReader reader = null;
+        FileReader fileReader = null;
+        List<String[]> list = new ArrayList<>();
+        int[][] result = new int[0][];
+        try {
+            fileReader = new FileReader(file);
+            reader = new BufferedReader(fileReader);
+            reader.lines().forEach(x -> {
+                list.add(x.split("\t"));
+            });
+            String[][] strings = list.toArray(new String[0][0]);
+            result = new int[strings.length][strings[0].length];
+            for (int i = 0; i < strings.length; i++){
+                for (int j = 0; j < strings[i].length; j++){
+                    result[i][j] = Integer.parseInt(strings[i][j]);
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+                if (fileReader != null) {
+                    fileReader.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return sparseTotwoD(result);
+
+    }
+
     public int[][] sparseTotwoD(int[][] sparse){
 //        1. 读取第一行，创建二维数组
         int row = sparse[0][0];
@@ -45,6 +86,34 @@ public class SparseMatrix {
         }
 
         return result;
+    }
+
+    public boolean save(int[][] data, String fileName){
+        int[][] sparse = twoDToSparse(data);
+        File  file = null;
+        Writer writer = null;
+        try {
+             file = new File(fileName);
+             writer = new FileWriter(file);
+             for (int[] spa : sparse){
+                 String line = spa[0] + "\t" + spa[1] + "\t" + spa[2] + "\n";
+                 writer.write(line);
+             }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                if (writer != null) {
+                    writer.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return true;
     }
 
     public static void main(String[] args) {
@@ -70,6 +139,11 @@ public class SparseMatrix {
         int[][] result = sparseMatrix.sparseTotwoD(sparse);
         for (int[] tt : result){
             System.out.println(Arrays.toString(tt));
+        }
+//        System.out.println(sparseMatrix.save(data, "./map.data"));
+        int[][] results = sparseMatrix.read("./map.data");
+        for (int[] re : results){
+            System.out.println(Arrays.toString(re));
         }
     }
 
