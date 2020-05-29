@@ -7,6 +7,8 @@ public class SingleLinkList {
 
     private HeroNode head = null;
 
+    
+
     public static void main(String[] args) {
         HeroNode node1 = new HeroNode(1, "马超", "house over");
         HeroNode node2 = new HeroNode(2, "孙策", "grandson");
@@ -183,6 +185,7 @@ public class SingleLinkList {
     public void list(){
         if (head.next == null){
             System.out.println("链表为空");
+            return;
         }
 
         HeroNode heroNode = head.next;
