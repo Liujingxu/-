@@ -1,4 +1,4 @@
-package com.liujx;
+package com.liujx.stack;
 
 import java.util.*;
 
@@ -126,16 +126,24 @@ public class Poland {
 
     public static void main(String[] args) {
         Poland poland = new Poland();
+        System.out.println("输入表达式：");
+        Scanner scanner = new Scanner(System.in);
+        String func = scanner.next();
+
         List<String> list = poland.translate("(30+4)*55-66");
         System.out.println(list);
-        Queue<String> queue = poland.toInFix("1+2*3/4");
-        StringBuilder func = new StringBuilder();
-        while (!queue.isEmpty()){
-            func.append(queue.poll() + " ");
-        }
-        System.out.println(func);
+        Queue<String> queue = null;
+        try {
+            queue = poland.toInFix(func);
+            StringBuilder fun = new StringBuilder();
 
-        int calculate = poland.rePolandCalculate(func.toString());
-        System.out.println(calculate);
+            int calculate = poland.rePolandCalculate(func.toString());
+            System.out.println(calculate);
+        } catch (Exception e) {
+            System.out.println("输的不对哇");
+        }
+
+
+
     }
 }

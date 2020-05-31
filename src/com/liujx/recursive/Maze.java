@@ -36,7 +36,7 @@ public class Maze {
             // 策略：下 -> 右 -> 上 -> 左
             if (go(map, i + 1, j)){
                 return true;
-            }else if (go(map, i, j + 1)){
+            }else if (go(map, i, j + 1) ){
                 return true;
             }else if (go(map, i, j - 1)){
                 return true;

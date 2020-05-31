@@ -1,4 +1,4 @@
-package com.liujx;
+package com.liujx.stack;
 
 public class MyStack{
 

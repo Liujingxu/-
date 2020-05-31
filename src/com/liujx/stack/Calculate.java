@@ -1,4 +1,6 @@
-package com.liujx;
+package com.liujx.stack;
+
+import com.liujx.stack.MyStack;
 
 public class Calculate {
 

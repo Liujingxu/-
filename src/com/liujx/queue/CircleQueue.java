@@ -1,4 +1,4 @@
-package com.liujx;
+package com.liujx.queue;
 
 public class CircleQueue {
     private int maxSize;

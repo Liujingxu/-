@@ -1,6 +1,4 @@
-package com.liujx;
-
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+package com.liujx.queue;
 
 import java.util.Scanner;
 
