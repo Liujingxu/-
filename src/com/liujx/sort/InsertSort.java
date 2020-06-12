@@ -29,9 +29,12 @@ public class InsertSort implements Sort {
 //        int[] arr = new int[]{6, 5, 4, 2, 3, 1};
         Random random = new Random();
         int[] array = random.ints(80000).toArray();
-        System.out.println(Arrays.toString(array));
+//        System.out.println(Arrays.toString(array));
+        long start = System.currentTimeMillis();
         int[] sort = insertSort.sort(array);
-        System.out.println(Arrays.toString(sort));
+        long end = System.currentTimeMillis();
+        System.out.println(end - start);
+//        System.out.println(Arrays.toString(sort));
 
     }
 }

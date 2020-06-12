@@ -35,11 +35,11 @@ public class BubbleSort implements Sort {
         int[] array = random.ints(80000).toArray();
         System.out.println(Arrays.toString(array));
         long start = System.currentTimeMillis();
-        System.out.println("timestamp-start " + start);
+//        System.out.println("timestamp-start " + start);
         int[] sort = bubbleSort.sort(array);
-        System.out.println(Arrays.toString(sort));
+//        System.out.println(Arrays.toString(sort));
         long end = System.currentTimeMillis();
-        System.out.println("timestamp-end " + end);
-        System.out.println((end - start) / 1000  + "秒");
+//        System.out.println("timestamp-end " + end);
+        System.out.println((end - start));
     }
 }
