@@ -3,9 +3,10 @@ package com.liujx.sort;
 import java.util.Arrays;
 import java.util.Random;
 
-public class RadixSort {
+public class RadixSort implements Sort {
 
-    public int[] radixSort(int[] array){
+    @Override
+    public int[] sort(int[] array){
         int length = array.length;
 
         int max = Integer.MIN_VALUE;
@@ -50,7 +51,7 @@ public class RadixSort {
 //        System.out.println(Arrays.toString(sort));
         Random random = new Random(256);
         int[] array = random.ints(0, 8000000).limit(8000000).toArray();
-        int[] sort1 = radixSort.radixSort(array);
+        int[] sort1 = radixSort.sort(array);
         System.out.println(Arrays.toString(sort1));
     }
 }
